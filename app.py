@@ -35,4 +35,3 @@ def _db_close(exc):
 @login_manager.user_loader
 def load_user(user_id):
     return User_.get_or_none(id = user_id)     #to retrieve the current user
-askdbjaskdjnsakjdn
