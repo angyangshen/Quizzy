@@ -1,0 +1,6 @@
+.vscode
+*.DS_Store
+*__pycache__
+*.env
+project_web/static/.webassets-cache
+project_web/static/gen
