@@ -23,3 +23,16 @@ def internal_server_error(e):
 def home():
     return render_template('home.html')
 
+@app.route("/contact")
+def contact():
+    return render_template('contact_us.html')
+
+@app.route("/aboutus")
+def about():
+    return render_template('about_us.html')
+
+@app.route("/pricingplan")
+def pricing():
+    return render_template('pricing_plan.html')
+
+
