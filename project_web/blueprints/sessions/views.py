@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from flask_login import login_required,login_user,logout_user,current_user
 
 
-students_blueprint = Blueprint('sessions',
+sessions_blueprint = Blueprint('sessions',
                             __name__,
                             template_folder='templates')
 
@@ -12,3 +12,11 @@ students_blueprint = Blueprint('sessions',
 @sessions_blueprint.route('/new', methods=['GET'])
 def new():
     return render_template('sessions/new.html')
+
+@sessions_blueprint.route('/students/new', methods=['GET'])
+def students():
+    return render_template('sessions/students.html')
+
+@sessions_blueprint.route('/teachers/new', methods=['GET'])
+def teachers():
+    return render_template('sessions/teachers.html')
