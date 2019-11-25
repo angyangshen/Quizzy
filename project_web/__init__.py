@@ -35,4 +35,8 @@ def about():
 def pricing():
     return render_template('pricing_plan.html')
 
+@app.route("/survey")
+def survey():
+    return render_template('survey.html')
+
 
