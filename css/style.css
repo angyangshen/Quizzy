@@ -1911,12 +1911,22 @@ input[type="text"] {
   border: 1px solid #4aca85;
 }
 
+
 .btn-primary.btn-outline:hover,
 .btn-primary.btn-outline:focus,
 .btn-primary.btn-outline:active {
   background: #4aca85;
   color: #fff;
 }
+
+.btn-secondary.btn-outline:hover,
+.btn-secondary.btn-outline:focus,
+.btn-secondary.btn-outline:active {
+  background: #023a20;
+  color: #fff;
+}
+
+
 
 .btn-success {
   background: #5cb85c;
