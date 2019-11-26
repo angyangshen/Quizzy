@@ -20,3 +20,21 @@ def students():
 @sessions_blueprint.route('/teachers/new', methods=['GET'])
 def teachers():
     return render_template('sessions/teachers.html')
+
+@sessions_blueprint.route('/create', methods=['GET'])
+def create():
+    username= request.form.get('username')
+    password= request.form.get('password')
+    user = User_.get_or_none(username=username)
+    if user:
+        result = check_password_hash(user.password,password)
+        if result: 
+            flash("Login successful!", "success")
+        else:
+            flash("Wrong password, please try again", "warning")
+            return redirect(url_for(''))
+    else:
+        flash("Wrong username","warning")
+        return redirect(url_for(''))
+    
+        
