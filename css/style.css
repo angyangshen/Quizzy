@@ -221,6 +221,11 @@ figure {
   transition: 0s;
 }
 
+.has-dropdown {
+  color: whitesmoke;
+  font-weight: normal;
+}
+
 .colorlib-nav ul li.has-dropdown .dropdown:before {
   bottom: 100%;
   left: 40px;
@@ -280,7 +285,7 @@ figure {
 }
 
 .colorlib-nav ul li.active>a {
-  color: rgba(255, 255, 255, 0.5);
+  color: white(255, 255, 255, 0.5);
   position: relative;
 }
 
@@ -360,7 +365,7 @@ figure {
 
 @media screen and (max-width: 768px) {
   .video-hero {
-    heifght: inherit;
+    height: inherit;
     padding: 3em 0;
   }
 }
@@ -1650,7 +1655,7 @@ input[type="text"] {
   position: absolute;
   right: 0px;
   font-family: 'icomoon';
-  speak: none;
+  speak-as: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
