@@ -91,12 +91,15 @@ input:focus {
 input:focus::-webkit-input-placeholder {
   color: transparent;
 }
+
 input:focus:-moz-placeholder {
   color: transparent;
 }
+
 input:focus::-moz-placeholder {
   color: transparent;
 }
+
 input:focus:-ms-input-placeholder {
   color: transparent;
 }
@@ -104,12 +107,15 @@ input:focus:-ms-input-placeholder {
 textarea:focus::-webkit-input-placeholder {
   color: transparent;
 }
+
 textarea:focus:-moz-placeholder {
   color: transparent;
 }
+
 textarea:focus::-moz-placeholder {
   color: transparent;
 }
+
 textarea:focus:-ms-input-placeholder {
   color: transparent;
 }
@@ -117,12 +123,15 @@ textarea:focus:-ms-input-placeholder {
 input::-webkit-input-placeholder {
   color: #999999;
 }
+
 input:-moz-placeholder {
   color: #999999;
 }
+
 input::-moz-placeholder {
   color: #999999;
 }
+
 input:-ms-input-placeholder {
   color: #999999;
 }
@@ -130,12 +139,15 @@ input:-ms-input-placeholder {
 textarea::-webkit-input-placeholder {
   color: #999999;
 }
+
 textarea:-moz-placeholder {
   color: #999999;
 }
+
 textarea::-moz-placeholder {
   color: #999999;
 }
+
 textarea:-ms-input-placeholder {
   color: #999999;
 }
@@ -300,7 +312,7 @@ input.input100 {
   height: 55px;
 }
 
-.input100:focus + .label-input100 {
+.input100:focus+.label-input100 {
   top: 10px;
   font-size: 13px;
   color: #111111;
@@ -310,7 +322,7 @@ input.input100 {
   height: 55px !important;
 }
 
-.has-val + .label-input100 {
+.has-val+.label-input100 {
   top: 10px;
   font-size: 13px;
   color: #111111;
@@ -369,7 +381,7 @@ input.input100 {
   opacity: 0;
 
   background: #696969;
-  
+
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -380,6 +392,7 @@ input.input100 {
 .login100-form-btn:hover {
   background-color: transparent;
 }
+
 .login100-form-btn:hover:before {
   opacity: 1;
 }
@@ -471,4 +484,61 @@ input.input100 {
   .wrap-input100.rs2 {
     border-top-right-radius: 0px;
   }
+}
+
+.box {
+  width: 500px;
+
+}
+
+.rating {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #f00, #ff0, #0f0);
+
+}
+
+.rating input {
+  display: none;
+
+}
+
+.rating label {
+  display: block;
+  cursor: pointer;
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  background: #fff;
+  color: #000;
+  font-size: 20px;
+  border-right: 1px solid #000;
+  font-family: "Cabin Sketch", cursive;
+  text-shadow: 1px 1px black;
+
+}
+
+.rating input[type="radio"]:hover~label,
+.rating input[type="radio"]:checked~label {
+  background: transparent;
+
+
+}
+
+.survey-form {
+  width: 100%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 60px;
+  color: #fefefe;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
 }
