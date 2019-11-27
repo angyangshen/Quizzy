@@ -492,6 +492,7 @@ input.input100 {
 
 }
 
+
 .rating {
   position: relative;
   display: flex;
@@ -542,5 +543,30 @@ input.input100 {
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
+}
+
+.rating2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.rating2 label {
+  display: block;
+  cursor: pointer;
+  width: 500px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  background: #fff;
+  color: #000;
+  font-size: 20px;
+ 
+  font-family: "Cabin Sketch", cursive;
+ 
 }
 
