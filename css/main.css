@@ -380,7 +380,7 @@ input.input100 {
   height: 100%;
   opacity: 0;
 
-  background: #696969;
+  background: #718bd3;
 
 
   -webkit-transition: all 0.4s;
@@ -391,6 +391,7 @@ input.input100 {
 
 .login100-form-btn:hover {
   background-color: transparent;
+  
 }
 
 .login100-form-btn:hover:before {
@@ -542,3 +543,4 @@ input.input100 {
   text-transform: uppercase;
   text-align: center;
 }
+
