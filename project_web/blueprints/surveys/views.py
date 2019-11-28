@@ -14,4 +14,9 @@ def new():
 
 @surveys_blueprint.route('/create', methods=['GET'])
 def create():
-    return render_template('surveys/new.html')
+    topic = request.form.get('topic')
+    question_1 = request.form.get('Question_1')
+    answer_1 = request.form.get('Answer_1')
+    create_survey = Survey(topic=topic, question_answer={question_1 : answer_1})
+    create_survey.save()
+    return render_template('teachers/survey.html')
