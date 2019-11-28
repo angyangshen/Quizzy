@@ -3,6 +3,7 @@ from flask import render_template
 from project_web.blueprints.teachers.views import teachers_blueprint
 from project_web.blueprints.students.views import students_blueprint
 from project_web.blueprints.sessions.views import sessions_blueprint
+from project_web.blueprints.surveys.views import surveys_blueprint
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
 
@@ -12,6 +13,7 @@ assets.register(bundles)
 app.register_blueprint(teachers_blueprint, url_prefix="/teachers")
 app.register_blueprint(students_blueprint, url_prefix="/students")
 app.register_blueprint(sessions_blueprint, url_prefix="/sessions")
+app.register_blueprint(surveys_blueprint, url_prefix="/surveys")
 
 
 @app.errorhandler(500)
