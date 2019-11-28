@@ -77,3 +77,96 @@ $(document).ready(function(){
     </ul>
     <hr>
            
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js "></script>
+      
+      <title>Quizzy</title>
+    </head>
+    <h1>Chart.js Sample</h1>
+    <div class="chart-container" style="position: relative; height:40vh; width: 40vw;">
+        <canvas id="myChart" ></canvas>
+        <canvas id="confidenceChart"></canvas>
+    </div>
+    <script>
+      var ctx = document.getElementById('myChart');
+      var myChart = new Chart(ctx, {
+          type: 'doughnut',
+            data: {
+                labels: ['Adrian', 'Boyke', 'Haziq', 'Celine'],
+                datasets: [{ 
+                    label: 'Level of Inteligence',
+                    data: [11, 5, 6, 7],
+                    backgroundColor: [
+                        'rgba(231, 76, 60,0.5) ',
+                        '#00FF00',
+                        '#0000FF',
+                        '#FFFF00',
+                    ]
+                   
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes:[{
+                        ticks:{
+                            suggestedMax:15,
+                            suggestedMin:0
+                        }
+                    }], 
+                    xAxes: [{
+                        gridLines: {
+                            offsetGridLines: true,
+                            drawBorder: false,
+
+                        }
+                    }]
+                }
+            }
+        });
+        var myChart = new Chart(ctx)
+        </script>
+        <script>var chartie = document.getElementById('confidenceChart');
+                var confidenceChart = new Chart(chartie, {
+                    type: 'bar',
+                      data: {
+                          labels: ['1', '2', '3', '4','5','6','7','8','9','10',],
+                          datasets: [{ 
+                              label: 'Number of Votes',
+                              data: [5, 10, 0, 0,7,10,0,15,15,15]   
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes:[{
+                                  gridLines:{
+                                    color: "rgba(0, 0, 0, 0)"
+                                  }
+                              }],
+                              xAxes: [{
+                                  scaleLabel:{
+                                      display:true,
+                                      labelString:'Confidence Level'
+                                  },
+                                  gridLines: {
+                                      offsetGridLines: true,
+                                      drawBorder: false,
+                                      color: "rgba(0, 0, 0, 0)"
+          
+                                  }
+                              }]
+                          },
+                          legend:{
+                              display:true,
+                              labels:{
+                                  fontColor: 'black'
+                              }
+                          }
+                      }
+                  });
+                  </script>
+  </body>
+  </html>
+  
