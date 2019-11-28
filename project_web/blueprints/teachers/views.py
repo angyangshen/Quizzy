@@ -8,6 +8,6 @@ teachers_blueprint = Blueprint('teachers',
                             template_folder='templates')
 
 
-@teachers_blueprint.route('/new', methods=['GET'])
+@teachers_blueprint.route('/home', methods=['GET'])
 def new():
-    return render_template('teachers/new.html')
+    return render_template('teachers/home.html')
