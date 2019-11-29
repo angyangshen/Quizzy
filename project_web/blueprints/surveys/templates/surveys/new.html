@@ -1,4 +1,4 @@
-<h1>Creat a new survey</h1>
+<h1>Create a new survey</h1>
 ​
 <form id="survey_form" action="{{url_for('surveys.create')}}" method="POST">
   Survey Topic <br />
@@ -12,25 +12,34 @@
     </select>
     <div></div>
   </div>
-  <div id="duplicater">
-    Question:
-    <input type="text" name="Question_1" placeholder="Type here.." />
-    Correct answer:
-    <input type="text" name="Answer_1" placeholder="Type here.." />
-    ​
-    <button type="submit">SUBMIT</button><br />
+  <div id="Questions">
+    <div id="duplicater">
+        <p>Question <a id="clicks">initialField</a></p> 
+      <input type="text" name="Question_1[]" placeholder="Type here.." />
+      Correct answer:
+      <input type="text" name="Answer_1[]" placeholder="Type here.." />
+    </div>
   </div>
+  <br><button type="submit">SUBMIT</button><br />
 </form>
+    ​
 ​
 <button onclick="addQuestion()">Add Question</button>
 ​ ​
 <script>
+  let maxField = 4
+  let initialField = 1
   function addQuestion() {
+    //Check maximum number of input fields
+    if(initialField < maxField){ 
+    initialField++; //Increment field counter
     question = document.getElementById("duplicater");
-    clone = div.cloneNode(true);
-    x = document.getElementById("survey_form");
-    x.appendChild(Question);
+    clone = question.cloneNode(true);
+    document.getElementById("Questions").appendChild(clone);
+    document.getElementById("clicks").innerHTML = initialField;
   }
+    else
+    alert("Sorry! Cannot add more questions..")}
 </script>
 ​ ​
 <!-- <script>

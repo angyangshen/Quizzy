@@ -24,7 +24,6 @@ def return_db():
             password=db_config.get('password', None),
             host=db_config.get('host', 'localhost'),
             port=db_config.get('port', '5432'),
-            register_hstore=True
             )
 
     else:
@@ -38,7 +37,6 @@ def return_db():
             user=db_config.get('user', None),
             password=db_config.get('password', None),
             host=db_config.get('host', 'localhost'),
-            port=db_config.get('port', '5432'),
-            register_hstore=True)
+            port=db_config.get('port', '5432'))
 
 db = return_db()
