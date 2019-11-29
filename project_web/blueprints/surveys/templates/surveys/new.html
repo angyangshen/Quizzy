@@ -1,4 +1,57 @@
-<h1>Create a new survey</h1>
+<h1>Creat a new survey</h1>
+​ Survey Topic <br />
+<div class="dropdown">
+  <select name="topic">
+    <option value="Mathematics">Mathematics</option>
+    <option value="History">History</option>
+    <option value="Geography">Geography</option>
+    <option value="Science">Science</option>
+    <option value="Language">Language</option>
+  </select>
+</div>
+<form id="survey_form" action="{{url_for('surveys.create')}}" method="POST">
+  <div id="survey_container">
+    <div id="question_container"></div>
+    <button class="" id="add-btn" onclick="addInput(event)">
+      Add Question
+    </button>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+​ ​ ​
+<script>
+  let count = 0;
+  function addInput(event) {
+    event.preventDefault();
+    question = generateQuestion();
+    document.getElementById("question_container").innerHTML += question;
+  }
+  function generateQuestion() {
+    count += 1;
+    return `
+        <div>
+            <div>
+            <span>Question ${count}.</span>
+            <input name ="question_${count}"></input>
+            </div>
+            <div>
+            <span>Answer ${count}. </span>
+            <input name ="answer_${count}"></input>
+            </div>
+        </div>`;
+  }
+</script>
+​ ​
+<!-- <script>
+function addQuestion() {
+    Question = document.createElement("input")
+    x = document.getElementById("survey_form")
+    x.appendChild(Question)}
+    </script> -->
+​ ​
+
+
+<!-- <h1>Create a new survey</h1>
 ​
 <form id="survey_form" action="{{url_for('surveys.create')}}" method="POST">
   Survey Topic <br />
@@ -18,13 +71,8 @@
       <input type="text" name="Question_1[]" placeholder="Type here.." />
       Correct answer:
       <input type="text" name="Answer_1[]" placeholder="Type here.." />
-    </div>
-  </div>
-  <br><button type="submit">SUBMIT</button><br />
-</form>
-    ​
-​
-<button onclick="addQuestion()">Add Question</button>
+    </div> -->
+<!-- <button onclick="addQuestion()">Add Question</button>
 ​ ​
 <script>
   let maxField = 4
@@ -36,12 +84,8 @@
     question = document.getElementById("duplicater");
     clone = question.cloneNode(true);
     document.getElementById("Questions").appendChild(clone);
-    document.getElementById("clicks").innerHTML = initialField;
-  }
-    else
-    alert("Sorry! Cannot add more questions..")}
-</script>
-​ ​
+    document.getElementById("clicks").innerHTML = initialField; -->
+
 <!-- <script>
 function addQuestion() {
     Question = document.createElement("input")
