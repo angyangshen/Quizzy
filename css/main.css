@@ -391,7 +391,7 @@ input.input100 {
 
 .login100-form-btn:hover {
   background-color: transparent;
-  
+
 }
 
 .login100-form-btn:hover:before {
@@ -534,6 +534,8 @@ input.input100 {
 
 }
 
+
+
 .survey-form {
   width: 100%;
   display: block;
@@ -553,7 +555,7 @@ input.input100 {
   box-sizing: border-box;
 }
 
-.rating2 label {
+.rating2 button {
   display: block;
   cursor: pointer;
   width: 500px;
@@ -562,11 +564,13 @@ input.input100 {
   justify-content: center;
   align-items: center;
   transition: 0.5s;
-  background: #fff;
+  background: rgb(255, 255, 255);
   color: #000;
   font-size: 20px;
- 
   font-family: "Cabin Sketch", cursive;
- 
 }
 
+
+.rating2 button:focus{
+  background-color: #26e600;
+}
