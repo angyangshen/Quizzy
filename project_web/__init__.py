@@ -16,7 +16,7 @@ app.register_blueprint(sessions_blueprint, url_prefix="/sessions")
 app.register_blueprint(surveys_blueprint, url_prefix="/surveys")
 
 
-@app.errorhandler(500)
+@app.errorhandler500)
 def internal_server_error(e):
     return render_template('500.html'), 500
 
