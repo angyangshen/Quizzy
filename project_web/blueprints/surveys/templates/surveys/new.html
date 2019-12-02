@@ -8,12 +8,12 @@
 ​ Survey Topic <br />
 <form id="survey_form">
   <div class="dropdown">
-    <select name="topic">
-      <option value="Mathematics">Mathematics</option>
-      <option value="History">History</option>
-      <option value="Geography">Geography</option>
-      <option value="Science">Science</option>
-      <option value="Language">Language</option>
+    <select id="topic-selector" name="topic">
+      <option class="options" value="Mathematics">Mathematics</option>
+      <option class="options" value="History">History</option>
+      <option class="options" value="Geography">Geography</option>
+      <option class="options" value="Science">Science</option>
+      <option class="options" value="Language">Language</option>
     </select>
   </div>
   <div id="survey_container">
@@ -97,11 +97,13 @@
   function submitSurvey() {
     data = [];
     survey_pair = document.getElementsByClassName("survey_pair");
+    let topic = document.querySelector("select").value;
 
     for (let i = 0; i < survey_pair.length; i++) {
       let pair = survey_pair[i];
       survey_question = pair.getElementsByClassName("survey_question")[0].value;
       survey_answer = pair.getElementsByClassName("survey_answer")[0].value;
+
       if (pair.classList.contains("mcq")) {
         survey_choices = pair.getElementsByClassName("survey_choice");
         let choices = [];
@@ -127,9 +129,13 @@
         "Content-Type": "application/json"
       },
       url: "{{ url_for('surveys.create') }}",
-      data: JSON.stringify(data),
+      data: JSON.stringify({
+        topic,
+        survey: data
+      }),
       success: () => {
         alert("Yay! Survey submitted!");
+        debugger;
       }
     });
   }

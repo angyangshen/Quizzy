@@ -5,6 +5,6 @@ from playhouse.postgres_ext import JSONField
 
 
 class Survey(UserMixin,BaseModel):
-    topic=pw.CharField()
+    topic=pw.CharField(null=True)
     question_answer = JSONField(null=True)
     

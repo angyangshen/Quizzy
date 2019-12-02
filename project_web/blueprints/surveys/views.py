@@ -15,10 +15,15 @@ def new():
 
 @surveys_blueprint.route('/create', methods=['POST'])
 def create():
-    
-    topic = request.form.get('topic')
-    create_survey = Survey(topic=topic, question_answer=request.json)
+    create_survey = Survey(topic=request.json['topic'], question_answer=request.json['survey'])
     create_survey.save()
+    return render_template('surveys/new.html')
+
+@surveys_blueprint.route('/view', methods=['GET'])
+def view():
+    
+    return render_template('surveys/new.html')
+
 
     # question_1 = request.form.get('Question_1')
     # answer_1 = request.form.get('Answer_1')
