@@ -17,14 +17,10 @@ def new():
 def create():
     create_survey = Survey(topic=request.json['topic'], question_answer=request.json['survey'])
     create_survey.save()
-    return render_template('surveys/new.html')
+    survey = Survey.select().order_by(Survey.id.desc()) 
+    return str(survey[0].id)
 
 @surveys_blueprint.route('/view', methods=['GET'])
 def view():
-    
-    return render_template('surveys/new.html')
-
-
-    # question_1 = request.form.get('Question_1')
-    # answer_1 = request.form.get('Answer_1')
-    # return render_template('teachers/survey.html')
+    survey = Survey.select().order_by(Survey.id.desc())  
+    return render_template('students/surveys.html', survey=survey)
