@@ -5,14 +5,15 @@
 {% endassets %}
 
 <h1>Survey</h1>
-<h1></h1>
+<h1>{{survey[0].id}}</h1>
+<h1>Welcome to the survey {{survey[0].topic}}!</h1>
 
 <div class="student_survey"></div>
-<form action="{{url_for('surveys.view')}}" method="POST">
+<!-- <form action="{{url_for('surveys.view')}}">
   <button type="submit" class="btn btn-primary" onclick="getSurvey()">
     Get Survey!
   </button>
-</form>
+</form> -->
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
