@@ -20,3 +20,7 @@ def students():
 @sessions_blueprint.route('/teachers/new', methods=['GET'])
 def teachers():
     return render_template('sessions/teachers.html')
+
+# @sessions_blueprint.route('/new', methods=['GET'])
+# def new():
+#     return render_template('sessions/new.html')

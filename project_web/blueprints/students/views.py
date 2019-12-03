@@ -11,11 +11,6 @@ students_blueprint = Blueprint('students',
 
 @students_blueprint.route('/new', methods=['GET'])
 def new():
-    return render_template('students/new.html')
+    return render_template('')
 
 
-
-# @students_blueprint.route('/', methods=['GET'])
-# def new():
-#     return render_template('students/new.html')
-    
