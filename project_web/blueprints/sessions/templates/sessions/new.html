@@ -1,19 +1,144 @@
-{% extends "_layout.html" %} {% block content %}
-<h1>Log in here!</h1>
-<div>
-  <form action="{{ url_for('sessions.create') }}" method="POST">
-    <div class="form-group">
-      <label for="username">Username: </label>
-      <input type="text" name="username" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="username">Password: </label>
-      <input type="password" name="password" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">
-      Submit
-    </button>
-  </form>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Student Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% assets "home_css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %} {% assets "home_js" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
 
-{% endblock %}
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/daterangepicker/daterangepicker.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/project_web/static/css/custom.scss"
+    />
+
+     -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories = true) %} {% if
+    messages %} {% for category,message in messages %}
+    <div class="alert alert-{{ category }} flash-message">
+      {{ message }}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %} {% block body %}{% endblock %}{%
+    block login %}{% endblock %}
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100 p-b-160 p-t-50">
+          <form
+            action="{{ url_for('sessions.create') }}"
+            method="POST"
+            class="login100-form validate-form"
+          >
+            <span class="login100-form-title p-b-43">
+              Student Login
+            </span>
+
+            <div class="wrap-input100 rs1">
+              <input class="input100" type="text" name="username" />
+              <span class="label-input100">Username</span>
+            </div>
+
+            <div class="wrap-input100 rs2">
+              <input class="input100" type="password" name="password" />
+              <span class="label-input100">Password</span>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <button type="submit" class="login100-form-btn">
+                Sign in
+              </button>
+            </div>
+
+            <div class="text-center w-full p-t-23">
+              <a href="#" class="txt1">
+                Not a student? Click here.
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script> -->
+    <!--===============================================================================================-->
+    <!-- <script src="vendor/animsition/js/animsition.min.js"></script> -->
+    <!--===============================================================================================-->
+    <!-- <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
+    <!--===============================================================================================-->
+    <!-- <script src="vendor/select2/select2.min.js"></script> -->
+    <!--===============================================================================================-->
+    <!-- <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script> -->
+    <!--===============================================================================================-->
+    <!-- <script src="vendor/countdowntime/countdowntime.js"></script> -->
+    <!--===============================================================================================-->
+    <!-- <script src="/project_web/static/js/vendor/bootstrap-4.1.3.js"></script>
+    <script src="/project_web/static/js/vendor/jquery-3.3.1.js"></script>
+    <script src="/project_web/static/js/vendor/popper.js"></script> -->
+  </body>
+</html>

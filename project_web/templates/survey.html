@@ -1,0 +1,56 @@
+{% extends "_layout.html" %} {% block survey %}
+<h1>Survey</h1>
+
+<form action="" method="POST">
+  <div>
+    <p>1. How confident are you with the subject today?</p>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">
+            Not confident
+          </label>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">
+            Decent
+          </label>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">
+            Confident
+          </label>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">
+            Confident AF
+          </label>
+        </div>
+      </li>
+    </ul>
+    <!-- <label for="answer">
+      <input type="text" name="answer" />
+    </label> -->
+  </div>
+</form>
+<br /><br />
+<form action="" method="POST">
+  <div>
+    <p>
+      2. Do you have anything to comment to improve your experience in the
+      class?
+    </p>
+    <input type="text" class="form-control" />
+  </div>
+</form>
+{% endblock %}

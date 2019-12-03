@@ -14,3 +14,7 @@ def new():
     return render_template('')
 
 
+@students_blueprint.route('/survey', methods=['GET'])
+def survey():
+    return render_template('students/survey.html')
+

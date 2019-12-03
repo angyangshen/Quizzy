@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Activate Bootstrap 3 Dropdowns on Hover</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".dropdown, .btn-group").hover(function(){
+		var dropdownMenu = $(this).children(".dropdown-menu");
+		if(dropdownMenu.is(":visible")){
+			dropdownMenu.parent().toggleClass("open");
+		}
+	});
+});		
+</script>
+<style>
+.bs-example{
+	margin: 20px;
+}
+@media screen {
+  .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
+		display: block;
+	}
+	.dropdown-menu{
+		margin-top: 0;
+        height:400px;
+        overflow-y:auto;
+	}
+	.dropdown-toggle{
+		margin-bottom: 2px;
+	}
+	.navbar .dropdown-toggle, .nav-tabs .dropdown-toggle{
+		margin-bottom: 0;
+	}
+}
+</style>
+</head>
+<body>
+    <!--Navbar with dropdown menu-->
+    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Quizzly</a>
+            </div>
+        
+            
+
+ 
+    <!--Tabs with dropdown menu-->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#">Class</a></li>
+        <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Subject <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">example subject</a></li>                   
+                </ul>
+            </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Students <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                {% for student in students %}
+                <li><a href="#">{{ student.username}}</a></li>
+                <li class="divider"></li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+    <hr>
+           
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js "></script>
+      
+      <title>Quizzy</title>
+    </head>
+    <h1>Chart.js Sample</h1>
+    <div class="chart-container" style="position: relative; height:40vh; width: 40vw;">
+        <canvas id="myChart" ></canvas>
+        <canvas id="confidenceChart"></canvas>
+    </div>
+    <script>
+      var ctx = document.getElementById('myChart');
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+            data: {
+                labels: ['Adrian', 'Boyke', 'Haziq', 'Celine'],
+                datasets: [{ 
+                    label: 'Level of Inteligence',
+                    data: [11, 5, 6, 7],
+                    backgroundColor: [
+                        'rgba(231, 76, 60)',
+                        '#00FF00',
+                        '#0000FF',
+                        '#FFFF00',
+                    ]
+                   
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes:[{
+                        ticks:{
+                            suggestedMax:15,
+                            suggestedMin:0
+                        }
+                    }], 
+                    xAxes: [{
+                        gridLines: {
+                            offsetGridLines: true,
+                            drawBorder: false,
+
+                        }
+                    }]
+                }
+            }
+        });
+        var myChart = new Chart(ctx)
+        </script>
+        <script>var chartie = document.getElementById('confidenceChart');
+                var confidenceChart = new Chart(chartie, {
+                    type: 'bar',
+                      data: {
+                          labels: ['1', '2', '3', '4','5','6','7','8','9','10',],
+                          datasets: [{ 
+                              label: 'Number of Votes',
+                              data: [5, 10, 0, 0,7,10,0,15,15,15]   
+                          }]
+                      },
+                      options: {
+                          scales: {
+                              yAxes:[{
+                                  gridLines:{
+                                    color: "rgba(0, 0, 0, 0)"
+                                  }
+                              }],
+                              xAxes: [{
+                                  scaleLabel:{
+                                      display:true,
+                                      labelString:'Confidence Level'
+                                  },
+                                  gridLines: {
+                                      offsetGridLines: true,
+                                      drawBorder: false,
+                                      color: "rgba(0, 0, 0, 0)"
+          
+                                  }
+                              }]
+                          },
+                          legend:{
+                              display:true,
+                              labels:{
+                                  fontColor: 'black'
+                              }
+                          }
+                      }
+                  });
+                  </script>
+  </body>
+  </html>
+  

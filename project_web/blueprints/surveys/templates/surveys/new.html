@@ -1,0 +1,155 @@
+{% assets "home_css" %}
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets %} {% assets "home_js" %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+<h1>Creat a new survey</h1>
+​ Survey Topic <br />
+<form id="survey_form">
+  <div class="dropdown">
+    <select id="topic-selector" name="topic">
+      <option class="options" value="Mathematics">Mathematics</option>
+      <option class="options" value="History">History</option>
+      <option class="options" value="Geography">Geography</option>
+      <option class="options" value="Science">Science</option>
+      <option class="options" value="Language">Language</option>
+    </select>
+  </div>
+  <div id="survey_container">
+    <div id="question_container"></div>
+    <button
+      type="button"
+      class="btn btn-success"
+      id="add-btn"
+      onclick="addInput(event)"
+    >
+      Add Question
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      id="add-btn"
+      onclick="addMultipleChoice(event)"
+    >
+      Add Multiple Choice Question
+    </button>
+    <button type="button" class="btn btn-success" onclick="submitSurvey()">
+      Submit
+    </button>
+  </div>
+</form>
+​ ​
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"
+></script>
+<script>
+  let count = 0;
+  function addInput(event) {
+    //adding the question into the html
+    let question = generateQuestion();
+    $("#question_container").append(question);
+  }
+  function generateQuestion() {
+    count += 1;
+    return `
+            <div class="survey_pair normal">
+                <div>
+                <span>Question ${count}.</span>
+                <input type="text" class="form-control survey_question" name ="question_${count}"></input>
+                </div>
+                <div>
+                <span>Answer ${count}. </span>
+                <input  class="form-control survey_answer" type="text" name ="answer_${count}"></input>
+                </div>
+            </div>`;
+  }
+  function addMultipleChoice(event) {
+    let question = generateMCQ();
+    // document.getElementById("question_container").append(question);
+    $("#question_container").append(question);
+  }
+  function generateMCQ() {
+    count += 1;
+    return `
+            <div class="survey_pair mcq">
+                <div>
+                    <span>Question ${count}.</span>
+                    <input class="form-control survey_question" name="question_${count}"></input>
+                    <input class="form-control survey_choice" name="choice_1" placeholder="Choice 1">
+                    <input class="form-control survey_choice" name="choice_2" placeholder="Choice 2">
+                    <input class="form-control survey_choice" name="choice_3" placeholder="Choice 3">
+                    <input class="form-control survey_choice" name="choice_4" placeholder="Choice 4">
+                </div>
+                <div>
+                    <span>Answer ${count}. </span>
+                    <input  class="form-control survey_answer" name ="answer_${count}"></input>
+                </div>
+            </div>`;
+  }
+
+  //   $.post("", function() {
+  //     $("").html(data);
+  //   });
+  function submitSurvey() {
+    data = [];
+    survey_pair = document.getElementsByClassName("survey_pair");
+    let topic = document.querySelector("select").value;
+
+    for (let i = 0; i < survey_pair.length; i++) {
+      let pair = survey_pair[i];
+      survey_question = pair.getElementsByClassName("survey_question")[0].value;
+      survey_answer = pair.getElementsByClassName("survey_answer")[0].value;
+
+      if (pair.classList.contains("mcq")) {
+        survey_choices = pair.getElementsByClassName("survey_choice");
+        let choices = [];
+        for (let j = 0; j < survey_choices.length; j++) {
+          let choice = survey_choices[j];
+          choices.push(choice.value);
+        }
+        data.push({
+          type: "mcq",
+          question: survey_question,
+          answer: survey_answer,
+          choice: choices
+        });
+      } else {
+        data.push({
+          type: "normal",
+          question: survey_question,
+          answer: survey_answer
+        });
+      }
+    }
+    $.ajax({
+      type: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      url: "{{ url_for('surveys.create') }}",
+      data: JSON.stringify({
+        topic,
+        survey: data
+      }),
+      success: response => {
+        alert(
+          "You're survey code is : " +
+            response +
+            "! Please give this code to the students in order to start doing the survey!"
+        );
+        window.location.replace("{{url_for('surveys.new')}}");
+      }
+    });
+  }
+</script>
+​ ​
+<!-- <script>
+function addQuestion() {
+    Question = document.createElement("input")
+    x = document.getElementById("survey_form")
+    x.appendChild(Question)}
+    </script> -->
