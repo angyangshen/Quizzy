@@ -4,16 +4,46 @@
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 
-<h1>Survey</h1>
-<h1>{{survey[0].id}}</h1>
-<h1>Welcome to the survey {{survey[0].topic}}!</h1>
+<h1>Welcome to the {{survey.topic}} survey !</h1>
 
-<div class="student_survey"></div>
-<!-- <form action="{{url_for('surveys.view')}}">
-  <button type="submit" class="btn btn-primary" onclick="getSurvey()">
-    Get Survey!
+<form class="student_survey">
+  {% for survey_pair in survey.question_answer %}{% if
+  survey_pair['type']=="normal" %}
+  <div class="student_pair">
+    <div class="student_question">{{survey_pair['question']}}</div>
+    <div class="question_type" style="display: none;">normal</div>
+    <input name="student_answer" class="form-control student_answer" />
+  </div>
+
+  {% elif survey_pair['type']=="mcq" %}
+  <div class="student_pair">
+    <div class="student_question">{{survey_pair['question']}}</div>
+    <div class="question_type" style="display: none;">mcq</div>
+    <select name="student_answer" class="student_answer">
+      <option value="{{survey_pair['choice'][0]}}"
+        >{{survey_pair['choice'][0]}}</option
+      >
+      <option value="{{survey_pair['choice'][1]}}"
+        >{{survey_pair['choice'][1]}}</option
+      >
+      <option value="{{survey_pair['choice'][2]}}"
+        >{{survey_pair['choice'][2]}}</option
+      >
+      <option value="{{survey_pair['choice'][3]}}"
+        >{{survey_pair['choice'][3]}}</option
+      >
+    </select>
+  </div>
+  {% endif %}{% endfor %}
+  <button
+    href="surveys/result"
+    type="button"
+    onclick="checkAnswer()"
+    class="btn btn-primary"
+  >
+    Submit survey
   </button>
-</form> -->
+</form>
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -22,18 +52,35 @@
 ></script>
 <script>
   student_survey = document.getElementsByClassName("student_survey");
-  function getSurvey() {
-    //   $.ajax({
-    //     type: "GET",
-    //     headers: {
-    //       "Content-type": "application / json"
-    //     },
-    //     url: "{{url_for('surveys.view')}}",
-    //     data: JSON.stringify(data),
-    //     success: response => {
-    //       alert(response);
-    //     }
-    //   });
-    //   console.log();
+  student_pair = document.getElementsByClassName("student_pair");
+  function checkAnswer() {
+    data = [];
+    for (let i = 0; i < student_pair.length; i++) {
+      let pair = student_pair[i];
+      student_question = pair.getElementsByClassName("student_question")[0]
+        .innerText;
+      student_answer = pair.getElementsByClassName("student_answer")[0].value;
+      question_type = pair.getElementsByClassName("question_type")[0].innerText;
+      data.push({
+        type: question_type,
+        question: student_question,
+        answer: student_answer
+      });
+    }
+
+    $.ajax({
+      type: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      url: "{{ url_for('surveys.checkAnswer')}}",
+      data: JSON.stringify({
+        id: "{{survey.id}}",
+        survey: data
+      }),
+      success: response => {
+        window.location.replace(response);
+      }
+    });
   }
 </script>

@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template,request,redirect,url_for,flash
-from werkzeug.security import generate_password_hash
-from werkzeug.utils import secure_filename
 from flask_login import login_required,login_user,logout_user,current_user
 from models.survey import Survey
+from models.user_survey import User_survey
 
 surveys_blueprint = Blueprint('surveys',
                             __name__,
@@ -20,7 +19,54 @@ def create():
     survey = Survey.select().order_by(Survey.id.desc()) 
     return str(survey[0].id)
 
-@surveys_blueprint.route('/view', methods=['GET'])
+@surveys_blueprint.route('/view', methods=['POST'])
 def view():
-    survey = Survey.select().order_by(Survey.id.desc())  
+    survey_code = request.form.get('survey_code')
+    survey = Survey.get_by_id(survey_code)
+   
     return render_template('students/surveys.html', survey=survey)
+
+@surveys_blueprint.route('/checkanswer', methods=['POST'])
+def checkAnswer():
+    create_response = User_survey(question_response = request.json['survey'],student_survey_id = request.json['id'])
+    print(create_response)
+    current_survey = Survey.get_by_id(request.json['id'])
+    print(current_survey)
+    question_answer =  current_survey.question_answer
+    result = []
+    correct = []
+    for index, q_r in enumerate(create_response.question_response):
+        if q_r['question'] in question_answer[index]['question'] and q_r['answer'] in question_answer[index]['answer']:
+            q_r['correct']= True
+            result.append(q_r)
+            
+        else:
+            q_r['correct']= False
+            result.append(q_r)
+            
+    create_response.question_response = result
+    create_response.save()
+
+    return (url_for('surveys.result', survey_id = request.json['id']))
+    
+
+
+@surveys_blueprint.route('/result/<survey_id>', methods =['GET'])
+def result(survey_id):
+    current_survey = User_survey.get_by_id(survey_id)
+    result = [q['correct'] for q in current_survey.question_response]
+    passed = True
+    percentage = (result.count(True)/len(result))*100   
+    if percentage >= 50:
+        passed = True
+    elif percentage < 50:
+        passed = False
+    print("your mom")
+    return render_template('surveys/result.html',percentage = percentage, passed = passed)
+    
+            
+
+        
+
+
+
