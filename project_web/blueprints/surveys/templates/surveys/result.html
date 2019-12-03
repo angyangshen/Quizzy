@@ -2,13 +2,8 @@
 <link rel="stylesheet" href="{{ ASSET_URL }}" />
 {% endassets %} {% assets "home_js" %}
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-{% endassets %} 
-
-
-{% if passed %}
-<h1>Congratulations! You've scored {{percentage}} points!</h1>
-{% elif passed %}
-<h1>You've scored {{percentage}} points! Good luck next time!</h1>
+{% endassets %} {% if passed %}
+<h1>Congratulations! You've scored {{percentage}}%!</h1>
+{% elif not passed %}
+<h1>You've scored {{percentage}}%! Better luck next time!</h1>
 {% endif %}
-
-<h1>hihi</h1>

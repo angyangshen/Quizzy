@@ -45,6 +45,7 @@ def checkAnswer():
             result.append(q_r)
             
     create_response.question_response = result
+    create_response.user_id = current_user.id
     create_response.save()
 
     return (url_for('surveys.result', survey_id = request.json['id']))
@@ -53,15 +54,14 @@ def checkAnswer():
 
 @surveys_blueprint.route('/result/<survey_id>', methods =['GET'])
 def result(survey_id):
-    current_survey = User_survey.get_by_id(survey_id)
+    current_survey = User_survey.get_or_none(User_survey.student_survey_id == survey_id,User_survey.user_id == current_user.id)
     result = [q['correct'] for q in current_survey.question_response]
     passed = True
-    percentage = (result.count(True)/len(result))*100   
+    percentage = int((result.count(True)/len(result))*100)   
     if percentage >= 50:
         passed = True
     elif percentage < 50:
-        passed = False
-    print("your mom")
+        passed = False  
     return render_template('surveys/result.html',percentage = percentage, passed = passed)
     
             
