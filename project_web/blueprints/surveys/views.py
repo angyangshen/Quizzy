@@ -65,6 +65,7 @@ def result(survey_id):
     elif current_survey.percentage_correct < 50:
         passed = False
     return render_template('surveys/result.html',percentage = current_survey.percentage_correct, passed = passed)
+
     
             
 
