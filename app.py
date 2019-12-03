@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from models.base_model import db
 import peeweedbevolve
 from models import *
+from models.user import User_
 
 web_dir = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), 'project_web')
