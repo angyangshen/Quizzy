@@ -10,5 +10,8 @@ from playhouse.postgres_ext import JSONField
 class User_survey(UserMixin,BaseModel):
     question_response = JSONField(null=True)
     student_survey_id = pw.IntegerField(null=True)
+    confidence_level = pw.IntegerField(null=True)
+    percentage_correct = pw.IntegerField(null=True)
+    user_id = pw.ForeignKeyField(User_, backref="user", null = True)
     
     
