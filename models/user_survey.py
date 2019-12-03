@@ -12,6 +12,6 @@ class User_survey(UserMixin,BaseModel):
     student_survey_id = pw.IntegerField(null=True)
     confidence_level = pw.IntegerField(null=True)
     percentage_correct = pw.IntegerField(null=True)
-
+    user_id = pw.ForeignKeyField(User_, backref="user", null = True)
     
     
