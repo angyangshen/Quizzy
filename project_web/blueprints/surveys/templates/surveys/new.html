@@ -113,13 +113,15 @@
         }
         data.push({
           type: "mcq",
-          [survey_question]: survey_answer,
+          question: survey_question,
+          answer: survey_answer,
           choice: choices
         });
       } else {
         data.push({
           type: "normal",
-          [survey_question]: survey_answer
+          question: survey_question,
+          answer: survey_answer
         });
       }
     }

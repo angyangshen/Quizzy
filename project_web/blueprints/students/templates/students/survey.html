@@ -8,8 +8,17 @@
 <h1></h1>
 
 <div class="student_survey"></div>
-<form action="{{url_for('surveys.view')}}" method="POST">
-  <button type="submit" class="btn btn-primary" onclick="getSurvey()">
+<form
+  action="{{url_for('surveys.view')}}"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <input
+    class="form-control"
+    name="survey_code"
+    placeholder="Enter your survey code from your teacher here!"
+  />
+  <button type="submit" class="btn btn-primary">
     Get Survey!
   </button>
 </form>
