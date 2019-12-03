@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>Activate Bootstrap 3 Dropdowns on Hover</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-	$(".dropdown, .btn-group").hover(function(){
-		var dropdownMenu = $(this).children(".dropdown-menu");
-		if(dropdownMenu.is(":visible")){
-			dropdownMenu.parent().toggleClass("open");
-		}
-	});
-});		
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Teacher Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js "></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+
+    <script>
+    $(document).ready(function(){
+	    $(".dropdown, .btn-group").hover(function(){
+		    var dropdownMenu = $(this).children(".dropdown-menu");
+		    if(dropdownMenu.is(":visible")){
+			    dropdownMenu.parent().toggleClass("open");
+		    }
+	    });
+    });		
 </script>
-<style>
-.bs-example{
-	margin: 20px;
-}
-@media screen {
-  .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
-		display: block;
-	}
-	.dropdown-menu{
-		margin-top: 0;
-        height:400px;
-        overflow-y:auto;
-	}
-	.dropdown-toggle{
-		margin-bottom: 2px;
-	}
-	.navbar .dropdown-toggle, .nav-tabs .dropdown-toggle{
-		margin-bottom: 0;
-	}
-}
-</style>
+
+{% assets "home_css" %}
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets %} {% assets "home_js" %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+<!-- <style>
+    .testing12345 {
+        font-family: "Sulphur Point", sans-serif;
+        font-family: "Vidaloka", serif;
+        font-family: "Sorts Mill Goudy", serif;
+        font-family: "Lalezar", cursive;
+        background-color: #f2eee2;
+        background-image: url("/images/background-2.jpg");
+        margin: 80px;
+    }
+</style> -->
+<link
+href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700&display=swap"
+rel="stylesheet"
+/>
 </head>
-<body>
+
+<body class="testing1">
     <!--Navbar with dropdown menu-->
     <nav id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="container">
+        <div class="container1">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -53,9 +62,6 @@ $(document).ready(function(){
                 <a class="navbar-brand" href="#">Quizzly</a>
             </div>
         
-            
-
- 
     <!--Tabs with dropdown menu-->
     <ul class="nav nav-tabs">
         <li class="active"><a href="#">Class</a></li>
@@ -69,7 +75,7 @@ $(document).ready(function(){
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Students <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 {% for student in students %}
-                <li><a href="#">{{ student.username}}</a></li>
+                <li><a href="#">{{ student.username }}</a></li>
                 <li class="divider"></li>
                 {% endfor %}
             </ul>
@@ -77,14 +83,6 @@ $(document).ready(function(){
     </ul>
     <hr>
            
-  <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js "></script>
-      
-      <title>Quizzy</title>
-    </head>
     <h1>Chart.js Sample</h1>
     <div class="chart-container" style="position: relative; height:40vh; width: 40vw;">
         <canvas id="myChart" ></canvas>
@@ -103,7 +101,8 @@ $(document).ready(function(){
                         'rgba(231, 76, 60)',
                         '#00FF00',
                         '#0000FF',
-                        '#FFFF00',
+                        // '#FFFF00',
+                        
                     ]
                    
                 }]
@@ -115,13 +114,13 @@ $(document).ready(function(){
                             suggestedMax:15,
                             suggestedMin:0
                         }
+                        
                     }], 
                     xAxes: [{
                         gridLines: {
                             offsetGridLines: true,
                             drawBorder: false,
-
-                        }
+                            }
                     }]
                 }
             }
@@ -167,6 +166,29 @@ $(document).ready(function(){
                       }
                   });
                   </script>
-  </body>
-  </html>
+</body>
+
+<style>
+        .bs-example{
+            margin: 20px;
+        }
+        @media screen {
+          .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
+                display: block;
+            }
+            .dropdown-menu{
+                margin-top: 0;
+                height:400px;
+                overflow-y:auto;
+            }
+            .dropdown-toggle{
+                margin-bottom: 2px;
+            }
+            .navbar .dropdown-toggle, .nav-tabs .dropdown-toggle{
+                margin-bottom: 0;
+            }
+        }
+</style>
+
+</html>
   

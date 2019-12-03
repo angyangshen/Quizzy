@@ -4,42 +4,46 @@
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 
-<h1>Creat a new survey</h1>
-​ Survey Topic <br />
-<form id="survey_form">
-  <div class="dropdown">
-    <select id="topic-selector" name="topic">
-      <option class="options" value="Mathematics">Mathematics</option>
-      <option class="options" value="History">History</option>
-      <option class="options" value="Geography">Geography</option>
-      <option class="options" value="Science">Science</option>
-      <option class="options" value="Language">Language</option>
-    </select>
-  </div>
-  <div id="survey_container">
-    <div id="question_container"></div>
-    <button
-      type="button"
-      class="btn btn-success"
-      id="add-btn"
-      onclick="addInput(event)"
-    >
-      Add Question
-    </button>
-    <button
-      type="button"
-      class="btn btn-success"
-      id="add-btn"
-      onclick="addMultipleChoice(event)"
-    >
-      Add Multiple Choice Question
-    </button>
-    <button type="button" class="btn btn-success" onclick="submitSurvey()">
-      Submit
-    </button>
-  </div>
-</form>
-​ ​
+<link href="https://fonts.googleapis.com/css?family=Lalezar|Sorts+Mill+Goudy|Sulphur+Point:400,700|Vidaloka&display=swap" rel="stylesheet">
+
+<body class="testing12345">
+  <h1 class="testing123">Creat a new survey</h1>
+  ​
+  <form id="survey_form">
+    <div class="dropdown">
+      <select id="topic-selector" name="topic">
+        <option class="options" value="Mathematics">Mathematics</option>
+        <option class="options" value="History">History</option>
+        <option class="options" value="Geography">Geography</option>
+        <option class="options" value="Science">Science</option>
+        <option class="options" value="Language">Language</option>
+      </select>
+    </div>
+    <div id="survey_container">
+      <div id="question_container"></div>
+      <button
+        type="button"
+        class="btn btn-success"
+        id="add-btn"
+        onclick="addInput(event)"
+      >
+        Add Question
+      </button>
+      <button
+        type="button"
+        class="btn btn-success"
+        id="add-btn"
+        onclick="addMultipleChoice(event)"
+      >
+        Add Multiple Choice Question
+      </button>
+      <button type="button" class="btn btn-success" onclick="submitSurvey()">
+        Submit
+      </button>
+    </div>
+  </form>
+  ​ ​
+</body>
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -59,7 +63,7 @@
             <div class="survey_pair normal">
                 <div>
                 <span>Question ${count}.</span>
-                <input type="text" class="form-control survey_question" name ="question_${count}"></input>
+                <input type="text" class="form-control survey-answer survey_question" name ="question_${count}"></input>
                 </div>
                 <div>
                 <span>Answer ${count}. </span>

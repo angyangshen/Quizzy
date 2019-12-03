@@ -312,7 +312,7 @@ input.input100 {
   height: 55px;
 }
 
-.input100:focus+.label-input100 {
+.input100:focus + .label-input100 {
   top: 10px;
   font-size: 13px;
   color: #111111;
@@ -322,7 +322,7 @@ input.input100 {
   height: 55px !important;
 }
 
-.has-val+.label-input100 {
+.has-val + .label-input100 {
   top: 10px;
   font-size: 13px;
   color: #111111;
@@ -382,7 +382,6 @@ input.input100 {
 
   background: #718bd3;
 
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -391,7 +390,6 @@ input.input100 {
 
 .login100-form-btn:hover {
   background-color: transparent;
-  
 }
 
 .login100-form-btn:hover:before {
@@ -489,9 +487,7 @@ input.input100 {
 
 .box {
   width: 500px;
-
 }
-
 
 .rating {
   position: relative;
@@ -501,12 +497,10 @@ input.input100 {
   border: 1px solid #000;
   box-sizing: border-box;
   background: linear-gradient(to right, #f00, #ff0, #0f0);
-
 }
 
 .rating input {
   display: none;
-
 }
 
 .rating label {
@@ -524,14 +518,11 @@ input.input100 {
   border-right: 1px solid #000;
   font-family: "Cabin Sketch", cursive;
   text-shadow: 1px 1px black;
-
 }
 
-.rating input[type="radio"]:hover~label,
-.rating input[type="radio"]:checked~label {
+.rating input[type="radio"]:hover ~ label,
+.rating input[type="radio"]:checked ~ label {
   background: transparent;
-
-
 }
 
 .survey-form {
@@ -565,8 +556,55 @@ input.input100 {
   background: #fff;
   color: #000;
   font-size: 20px;
- 
+
   font-family: "Cabin Sketch", cursive;
- 
 }
 
+.testing123 {
+  font-family: "Sulphur Point", sans-serif;
+  font-family: "Vidaloka", serif;
+  font-family: "Sorts Mill Goudy", serif;
+  text-align: center;
+}
+
+.testing12345 {
+  font-family: "Sulphur Point", sans-serif;
+  font-family: "Vidaloka", serif;
+  font-family: "Sorts Mill Goudy", serif;
+  font-family: "Lalezar", cursive;
+  background-color: #f2eee2;
+  background-image: url("/images/background-2.jpg");
+  margin: 80px;
+}
+
+.form-control {
+  margin: 20px;
+  border: 10px;
+}
+
+#topic-selector {
+  margin: 10px;
+  width: 150px;
+  height: 50;
+}
+
+.survey-answer {
+  font-family: "Sulphur Point", sans-serif;
+  font-family: "Vidaloka", serif;
+  font-family: "Sorts Mill Goudy", serif;
+  font-family: "Lalezar", cursive;
+}
+
+.testing1 {
+  background: beige;
+  font-family: "Sulphur Point", sans-serif;
+  font-family: "Vidaloka", serif;
+  font-family: "Sorts Mill Goudy", serif;
+  font-family: "Lalezar", cursive;
+
+}
+
+.container1 {
+  background: beige;
+
+}
