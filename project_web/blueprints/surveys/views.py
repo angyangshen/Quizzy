@@ -13,11 +13,18 @@ surveys_blueprint = Blueprint('surveys',
 def new():
     return render_template('surveys/new.html')
 
-@surveys_blueprint.route('/new', methods=['POST'])
+@surveys_blueprint.route('/create', methods=['POST'])
 def create():
-    topic = request.form.get('topic')
-    question_1 = request.form.getlist('Question_1[]')
-    answer_1 = request.form.getlist('Answer_1[]')
-    create_survey = Survey(topic=topic, question_answer={question_1 : answer_1})
+    create_survey = Survey(topic=request.json['topic'], question_answer=request.json['survey'])
     create_survey.save()
     return render_template('surveys/new.html')
+
+@surveys_blueprint.route('/view', methods=['GET'])
+def view():
+    
+    return render_template('surveys/new.html')
+
+
+    # question_1 = request.form.get('Question_1')
+    # answer_1 = request.form.get('Answer_1')
+    # return render_template('teachers/survey.html')
