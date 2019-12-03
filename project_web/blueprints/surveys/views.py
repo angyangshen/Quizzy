@@ -28,13 +28,12 @@ def view():
 
 @surveys_blueprint.route('/checkanswer', methods=['POST'])
 def checkAnswer():
-    create_response = User_survey(question_response = request.json['survey'],student_survey_id = request.json['id'])
+    create_response = User_survey(question_response = request.json['survey'],student_survey_id = request.json['id'], confidence_level = request.json['confidence_level'])
     print(create_response)
     current_survey = Survey.get_by_id(request.json['id'])
     print(current_survey)
     question_answer =  current_survey.question_answer
     result = []
-    correct = []
     for index, q_r in enumerate(create_response.question_response):
         if q_r['question'] in question_answer[index]['question'] and q_r['answer'] in question_answer[index]['answer']:
             q_r['correct']= True
@@ -43,8 +42,13 @@ def checkAnswer():
         else:
             q_r['correct']= False
             result.append(q_r)
-            
+
+    percentage = []        
+    test = [q['correct'] for q in result]
+    percentage = (test.count(True)/len(test))*100   
+
     create_response.question_response = result
+    create_response.percentage_correct = percentage
     create_response.user_id = current_user.id
     create_response.save()
 
@@ -55,14 +59,13 @@ def checkAnswer():
 @surveys_blueprint.route('/result/<survey_id>', methods =['GET'])
 def result(survey_id):
     current_survey = User_survey.get_or_none(User_survey.student_survey_id == survey_id,User_survey.user_id == current_user.id)
-    result = [q['correct'] for q in current_survey.question_response]
     passed = True
-    percentage = int((result.count(True)/len(result))*100)   
-    if percentage >= 50:
+    if current_survey.percentage_correct >= 50:
         passed = True
-    elif percentage < 50:
-        passed = False  
-    return render_template('surveys/result.html',percentage = percentage, passed = passed)
+    elif current_survey.percentage_correct < 50:
+        passed = False
+    return render_template('surveys/result.html',percentage = current_survey.percentage_correct, passed = passed)
+
     
             
 

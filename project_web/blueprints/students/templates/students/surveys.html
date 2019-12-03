@@ -3,10 +3,58 @@
 {% endassets %} {% assets "home_js" %}
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
+ <link
+   href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700&display=swap"
+   rel="stylesheet"
+ />
+
 
 <h1>Welcome to the {{survey.topic}} survey !</h1>
 
+
 <form class="student_survey">
+    <div class="container-login100 noob">
+      <div class="box">
+        <p class="survey-form">1. What is your feedback?</p>
+        <div class="student_confidence">
+          <input type="radio" class="" name="rating" id="rate10" value="10"/><label for="rate10"
+            >10</label
+          >
+          <input type="radio" class="" name="rating" id="rate9" value="9"/><label for="rate9"
+            >9</label
+          >
+          <input type="radio" class="" name="rating" id="rate8" value="8"/><label for="rate8"
+            >8</label
+          >
+          <input type="radio" class="" name="rating" id="rate7" value="7"/><label for="rate7"
+            >7</label
+          >
+          <input type="radio" class="" name="rating" id="rate6" value="6"/><label for="rate6"
+            >6</label
+          >
+          <input type="radio" class="" name="rating" id="rate5" value="5"/><label for="rate5"
+            >5</label
+          >
+          <input type="radio" class="" name="rating" id="rate4" value="4"/><label for="rate4"
+            >4</label
+          >
+          <input type="radio" class="" name="rating" id="rate3" value="3"/><label for="rate3"
+            >3</label
+          >
+          <input type="radio" class="" name="rating" id="rate2" value="2"/><label for="rate2"
+            >2</label
+          >
+          <input type="radio" class="" name="rating" id="rate1" value="1"/><label for="rate1"
+            >1</label
+          >
+        </div>
+        <!-- <div class="container-login100-form-btn">
+          <button type="submit" class="login100-form-btn">
+            Submit</a>
+          </button> -->
+        <!-- </div> -->
+      </div>
+    </div>
   {% for survey_pair in survey.question_answer %}{% if
   survey_pair['type']=="normal" %}
   <div class="student_pair">
@@ -51,8 +99,13 @@
   crossorigin="anonymous"
 ></script>
 <script>
-  student_survey = document.getElementsByClassName("student_survey");
-  student_pair = document.getElementsByClassName("student_pair");
+  let student_survey = document.getElementsByClassName("student_survey");
+  let student_pair = document.getElementsByClassName("student_pair");
+  let confidence_level;
+  $("input:radio").change(function(e){
+    confidence_level = e.target.value
+    console.log(confidence_level)
+  })
   function checkAnswer() {
     data = [];
     for (let i = 0; i < student_pair.length; i++) {
@@ -76,7 +129,8 @@
       url: "{{ url_for('surveys.checkAnswer')}}",
       data: JSON.stringify({
         id: "{{survey.id}}",
-        survey: data
+        survey: data,
+        confidence_level: confidence_level
       }),
       success: response => {
         window.location.replace(response);
