@@ -5,11 +5,23 @@
 {% endassets %}
 
 <h1>Survey</h1>
+<h1></h1>
 
 <div class="student_survey"></div>
-<button type="button" class="btn btn-primary" onclick="getSurvey()">
-  Get Survey!
-</button>
+<form
+  action="{{url_for('surveys.view')}}"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <input
+    class="form-control"
+    name="survey_code"
+    placeholder="Enter your survey code from your teacher here!"
+  />
+  <button type="submit" class="btn btn-primary">
+    Get Survey!
+  </button>
+</form>
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -17,18 +29,20 @@
   crossorigin="anonymous"
 ></script>
 <!-- <script>
+<script>
+  student_survey = document.getElementsByClassName("student_survey");
   function getSurvey() {
-    $.ajax({
-      type: "GET",
-      headers: {
-        "Content-type": "application / json"
-      },
-      url: "{{url_for('surveys.view')}}",
-      data: JSON.stringify(data),
-      success: response => {
-        alert(response);
-      }
-    });
-    console.log();
+    //   $.ajax({
+    //     type: "GET",
+    //     headers: {
+    //       "Content-type": "application / json"
+    //     },
+    //     url: "{{url_for('surveys.view')}}",
+    //     data: JSON.stringify(data),
+    //     success: response => {
+    //       alert(response);
+    //     }
+    //   });
+    //   console.log();
   }
 </script> -->

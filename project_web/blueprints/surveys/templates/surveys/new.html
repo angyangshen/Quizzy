@@ -113,13 +113,15 @@
         }
         data.push({
           type: "mcq",
-          [survey_question]: survey_answer,
+          question: survey_question,
+          answer: survey_answer,
           choice: choices
         });
       } else {
         data.push({
           type: "normal",
-          [survey_question]: survey_answer
+          question: survey_question,
+          answer: survey_answer
         });
       }
     }
@@ -133,8 +135,13 @@
         topic,
         survey: data
       }),
-      success: () => {
-        alert("Yay! Survey submitted!");
+      success: response => {
+        alert(
+          "You're survey code is : " +
+            response +
+            "! Please give this code to the students in order to start doing the survey!"
+        );
+        window.location.replace("{{url_for('surveys.new')}}");
       }
     });
   }
