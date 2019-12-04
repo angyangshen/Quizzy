@@ -1,5 +1,18 @@
 {% extends "navbar.html" %}{% block charts %}
-<h1>Chart.js Sample</h1>
+<form>
+<div class="dropdown">
+  <select id="topic-selector" name="chart_topic">
+    <option class="options" value="Mathematics">Mathematics</option>
+    <option class="options" value="History">History</option>
+    <option class="options" value="Geography">Geography</option>
+    <option class="options" value="Science">Science</option>
+    <option class="options" value="Language">Language</option>
+  </select>
+</div>
+</form>
+
+
+<h1>Data</h1>
 <div
   class="chart-container"
   style="position: relative; height:40vh; width: 40vw;"
@@ -7,93 +20,126 @@
   <canvas id="myChart"></canvas>
   <canvas id="confidenceChart"></canvas>
 </div>
-<script>
-  var ctx = document.getElementById("myChart");
-  var myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: {{studentlist|safe}},
-      datasets: [
-        {
-          label: "Level of Inteligence",
-          data: [11, 5, 6, 7],
-          backgroundColor: [
-            "#F81 B84",
-            "#F5CE28",
-            "#43C0F6",
-            "#F2EEE2",
-            "magenta"
-          ]
-        }
-      ]
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              suggestedMax: 15,
-              suggestedMin: 0
-            }
-          }
-        ],
-        xAxes: [
-          {
-            gridLines: {
-              offsetGridLines: true,
-              drawBorder: false
-            }
-          }
-        ]
-      }
-    }
-  });
-  var myChart = new Chart(ctx);
-</script>
-<script>
-  var chartie = document.getElementById("confidenceChart");
-  var confidenceChart = new Chart(chartie, {
-    type: "bar",
-    data: {
-      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-      datasets: [
-        {
-          label: "Number of Votes",
-          data: [5, 10, 0, 0, 7, 10, 0, 15, 15, 15]
-        }
-      ]
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            gridLines: {
-              color: "rgba(0, 0, 0, 0)"
-            }
-          }
-        ],
-        xAxes: [
-          {
-            scaleLabel: {
-              display: true,
-              labelString: "Confidence Level"
-            },
-            gridLines: {
-              offsetGridLines: true,
-              drawBorder: false,
-              color: "rgba(0, 0, 0, 0)"
-            }
-          }
-        ]
-      },
-      legend: {
-        display: true,
-        labels: {
-          fontColor: "black"
-        }
-      }
-    }
-  });
-</script>
 
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"
+></script>
+<script>
+  let ctx = document.getElementById("myChart");
+  let chart_topic;
+  $("#topic-selector").change(function(e){
+    chart_topic = e.target.value
+    
+    $.ajax({
+      type: "GET",
+      url: `http://127.0.0.1:5000/teachers/${chart_topic}`,
+      success: response => {
+        console.log(response)
+        let myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: response.confidencestudents,
+          datasets: [
+            {
+              label: "Confidence",
+              data: response.confidence,
+              backgroundColor: [
+                "#F81B84",
+                "#F5CE28",
+                "#43C0F6",
+                "#F2EEE2",
+                "magenta"
+              ]
+            }
+          ]
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  suggestedMax: 15,
+                  suggestedMin: 0
+                }
+              }
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  offsetGridLines: true,
+                  drawBorder: false
+                }
+              }
+            ]
+          }
+        }
+      });
+      myChart = new Chart(ctx);
+
+      }
+    });
+    
+  })
+  </script>
+
+<script>
+  let dtx = document.getElementById("myChart");
+  $("#topic-selector").change(function(e){
+    chart_topic = e.target.value
+    
+    $.ajax({
+      type: "GET",
+      url: `http://127.0.0.1:5000/teachers/${chart_topic}`,
+      success: response => {
+        console.log(response)
+        let myChart = new Chart(dtx, {
+        type: "bar",
+        data: {
+          labels: response.scorestudents,
+          datasets: [
+            {
+              label: "Knowledge",
+              data: response.scoring,
+              backgroundColor: [
+                "#F81B84",
+                "#F5CE28",
+                "#43C0F6",
+                "#F2EEE2",
+                "magenta"
+              ]
+            }
+          ]
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  suggestedMax: 15,
+                  suggestedMin: 0
+                }
+              }
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  offsetGridLines: true,
+                  drawBorder: false
+                }
+              }
+            ]
+          }
+        }
+      });
+      myChart = new Chart(dtx);
+
+      }
+    });
+    
+  })
+  </script>
 {% endblock %}
+
+

@@ -28,10 +28,15 @@ def view():
 
 @surveys_blueprint.route('/checkanswer', methods=['POST'])
 def checkAnswer():
-    create_response = User_survey(question_response = request.json['survey'],student_survey_id = request.json['id'], confidence_level = request.json['confidence_level'])
-    print(create_response)
+    create_response = User_survey(
+        question_response = request.json['survey'],
+        student_survey_id = request.json['id'], 
+        confidence_level = request.json['confidence_level'],
+        user_id=current_user.id,
+        survey_id=request.json['id'])
+
+    # Compare answers 
     current_survey = Survey.get_by_id(request.json['id'])
-    print(current_survey)
     question_answer =  current_survey.question_answer
     result = []
     for index, q_r in enumerate(create_response.question_response):
@@ -43,13 +48,14 @@ def checkAnswer():
             q_r['correct']= False
             result.append(q_r)
 
+    # Calculate the score
     percentage = []        
     test = [q['correct'] for q in result]
     percentage = (test.count(True)/len(test))*100   
 
+    # Save scores in db
     create_response.question_response = result
     create_response.percentage_correct = percentage
-    create_response.user_id = current_user.id
     create_response.save()
 
     return (url_for('surveys.result', survey_id = request.json['id']))
