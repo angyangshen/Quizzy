@@ -1,98 +1,119 @@
 {% assets "home_css" %}
 <link rel="stylesheet" href="{{ ASSET_URL }}" />
-<link rel="stylesheet" type="text/css" href="/project_web/static/css/vendor/main.css">
-<link rel="stylesheet" href="/project_web/static/css/vendor/style.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/project_web/static/css/vendor/main.css"
+/>
+<link rel="stylesheet" href="/project_web/static/css/vendor/style.css" />
 {% endassets %} {% assets "home_js" %}
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
- <link
-   href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700&display=swap"
-   rel="stylesheet"
- />
-
-
-<h1>Welcome to the {{survey.topic}} survey !</h1>
-
+<link
+  href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700&display=swap"
+  rel="stylesheet"
+/>
 
 <form class="student_survey">
-    <div class="container-login100">
-      <div class="box">
-        <p class="survey-form">1. What is your feedback?</p>
-        <div class="student_confidence rating">
-          <input type="radio" class="" name="rating" id="rate10" value="10"/><label for="rate10"
-            >10</label
-          >
-          <input type="radio" class="" name="rating" id="rate9" value="9"/><label for="rate9"
-            >9</label
-          >
-          <input type="radio" class="" name="rating" id="rate8" value="8"/><label for="rate8"
-            >8</label
-          >
-          <input type="radio" class="" name="rating" id="rate7" value="7"/><label for="rate7"
-            >7</label
-          >
-          <input type="radio" class="" name="rating" id="rate6" value="6"/><label for="rate6"
-            >6</label
-          >
-          <input type="radio" class="" name="rating" id="rate5" value="5"/><label for="rate5"
-            >5</label
-          >
-          <input type="radio" class="" name="rating" id="rate4" value="4"/><label for="rate4"
-            >4</label
-          >
-          <input type="radio" class="" name="rating" id="rate3" value="3"/><label for="rate3"
-            >3</label
-          >
-          <input type="radio" class="" name="rating" id="rate2" value="2"/><label for="rate2"
-            >2</label
-          >
-          <input type="radio" class="" name="rating" id="rate1" value="1"/><label for="rate1"
-            >1</label
-          >
-        </div>
-        <!-- <div class="container-login100-form-btn">
+  <div class="container-login100">
+    <h3 class="survey-form3">Welcome to the {{survey.topic}} survey !</h3>
+    <div class="box">
+      <p id="feedback-question" class="survey-form2">
+        1.From 1-10, how confident are you with {{survey.topic}} today?
+      </p>
+      <div class="student_confidence rating">
+        <input
+          type="radio"
+          class=""
+          name="rating"
+          id="rate10"
+          value="10"
+        /><label for="rate10">10</label>
+        <input type="radio" class="" name="rating" id="rate9" value="9" /><label
+          for="rate9"
+          >9</label
+        >
+        <input type="radio" class="" name="rating" id="rate8" value="8" /><label
+          for="rate8"
+          >8</label
+        >
+        <input type="radio" class="" name="rating" id="rate7" value="7" /><label
+          for="rate7"
+          >7</label
+        >
+        <input type="radio" class="" name="rating" id="rate6" value="6" /><label
+          for="rate6"
+          >6</label
+        >
+        <input type="radio" class="" name="rating" id="rate5" value="5" /><label
+          for="rate5"
+          >5</label
+        >
+        <input type="radio" class="" name="rating" id="rate4" value="4" /><label
+          for="rate4"
+          >4</label
+        >
+        <input type="radio" class="" name="rating" id="rate3" value="3" /><label
+          for="rate3"
+          >3</label
+        >
+        <input type="radio" class="" name="rating" id="rate2" value="2" /><label
+          for="rate2"
+          >2</label
+        >
+        <input type="radio" class="" name="rating" id="rate1" value="1" /><label
+          for="rate1"
+          >1</label
+        >
+      </div>
+      <hr />
+      <!-- <div class="container-login100-form-btn">
           <button type="submit" class="login100-form-btn">
             Submit</a>
           </button> -->
-        <!-- </div> -->
-      </div>
+      <!-- </div> -->
     </div>
-  {% for survey_pair in survey.question_answer %}{% if
-  survey_pair['type']=="normal" %}
-  <div class="student_pair">
-    <div class="student_question">{{survey_pair['question']}}</div>
-    <div class="question_type" style="display: none;">normal</div>
-    <input name="student_answer" class="form-control student_answer" />
-  </div>
+    {% for survey_pair in survey.question_answer %}{% if
+    survey_pair['type']=="normal" %}
 
-  {% elif survey_pair['type']=="mcq" %}
-  <div class="student_pair">
-    <div class="student_question">{{survey_pair['question']}}</div>
-    <div class="question_type" style="display: none;">mcq</div>
-    <select name="student_answer" class="student_answer">
-      <option value="{{survey_pair['choice'][0]}}"
-        >{{survey_pair['choice'][0]}}</option
-      >
-      <option value="{{survey_pair['choice'][1]}}"
-        >{{survey_pair['choice'][1]}}</option
-      >
-      <option value="{{survey_pair['choice'][2]}}"
-        >{{survey_pair['choice'][2]}}</option
-      >
-      <option value="{{survey_pair['choice'][3]}}"
-        >{{survey_pair['choice'][3]}}</option
-      >
-    </select>
+    <div class="student_pair survey-form2">
+      <div class="student_question">{{survey_pair['question']}}</div>
+      <div class="question_type" style="display: none;">normal</div>
+      <input name="student_answer" class="student_answer" />
+    </div>
+    <hr />
+
+    {% elif survey_pair['type']=="mcq" %}
+    <div class="student_pair survey-form2">
+      <div class="student_question">{{survey_pair['question']}}</div>
+      <div class="question_type" style="display: none;">mcq</div>
+      <form name="student_answer" class="student_answer">
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][0]}}"
+          >{{survey_pair['choice'][0]}}</input
+        ><br />
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][1]}}"
+          >{{survey_pair['choice'][1]}}</input
+        ><br />
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][2]}}"
+          >{{survey_pair['choice'][2]}}</input
+        ><br />
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][3]}}"
+          >{{survey_pair['choice'][3]}}</input
+        ><br />
+      </form>
+    </div>
+    <hr />
+
+    {% endif %}{% endfor %}
+    <button
+      href="surveys/result"
+      type="button"
+      onclick="checkAnswer()"
+      class="btn btn-primary"
+    >
+      Submit survey
+    </button>
   </div>
-  {% endif %}{% endfor %}
-  <button
-    href="surveys/result"
-    type="button"
-    onclick="checkAnswer()"
-    class="btn btn-primary"
-  >
-    Submit survey
-  </button>
 </form>
 
 <script
@@ -103,18 +124,24 @@
 <script>
   let student_survey = document.getElementsByClassName("student_survey");
   let student_pair = document.getElementsByClassName("student_pair");
+  let mcquestion = document.getElementsByClassName("mcquestion");
   let confidence_level;
-  $("input:radio").change(function(e){
-    confidence_level = e.target.value
-    console.log(confidence_level)
-  })
+  $("input:radio").change(function(e) {
+    confidence_level = e.target.value;
+    console.log(confidence_level);
+  });
   function checkAnswer() {
     data = [];
     for (let i = 0; i < student_pair.length; i++) {
       let pair = student_pair[i];
       student_question = pair.getElementsByClassName("student_question")[0]
         .innerText;
-      student_answer = pair.getElementsByClassName("student_answer")[0].value;
+      for (let j = 0; j < mcquestion.length; j++){
+        if(mcquestion[j].checked){
+          student_answer = mcquestion[j].value;
+          break;
+        }
+      }
       question_type = pair.getElementsByClassName("question_type")[0].innerText;
       data.push({
         type: question_type,
@@ -122,7 +149,7 @@
         answer: student_answer
       });
     }
-
+      console.log(data)
     $.ajax({
       type: "POST",
       headers: {

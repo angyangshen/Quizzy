@@ -554,7 +554,7 @@ input.input100 {
   align-items: center;
   transition: 0.5s;
   background: #fff;
-  color: #000;
+  color: #fff;
   font-size: 20px;
 
   font-family: "Cabin Sketch", cursive;
@@ -603,9 +603,16 @@ input.input100 {
   font-family: "Lalezar", cursive;
 }
 
-}
-
 .container1 {
   background: beige;
+}
 
+.teacher-survey-creator-title {
+  width: 100%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 35px;
+  color: black;
+  line-height: 1.2;
+  text-transform: uppercase;
 }

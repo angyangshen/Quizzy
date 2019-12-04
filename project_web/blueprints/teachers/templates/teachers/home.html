@@ -59,20 +59,20 @@ rel="stylesheet"
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Quizzly</a>
+                <a class="navbar-brand survey-form" href="#">Quizzly</a>
             </div>
         
     <!--Tabs with dropdown menu-->
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Class</a></li>
+        <li class="active"><a href="#" class="survey-form">Class</a></li>
         <li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Subject <b class="caret"></b></a>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle survey-form">Subject <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">example subject</a></li>                   
                 </ul>
             </li>
         <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Students <b class="caret"></b></a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle survey-form">Students <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 {% for student in students %}
                 <li><a href="#">{{ student.username }}</a></li>
@@ -83,7 +83,7 @@ rel="stylesheet"
     </ul>
     <hr>
            
-    <h1>Chart.js Sample</h1>
+    <h1 class="survey-form">Chart.js Sample</h1>
     <div class="chart-container" style="position: relative; height:40vh; width: 40vw;">
         <canvas id="myChart" ></canvas>
         <canvas id="confidenceChart"></canvas>
@@ -101,9 +101,10 @@ rel="stylesheet"
                         'rgba(231, 76, 60)',
                         '#00FF00',
                         '#0000FF',
-                        // '#FFFF00',
+                        '#FFFF00',
                         
                     ]
+                    
                    
                 }]
             },
@@ -148,6 +149,7 @@ rel="stylesheet"
                                   scaleLabel:{
                                       display:true,
                                       labelString:'Confidence Level'
+                                      
                                   },
                                   gridLines: {
                                       offsetGridLines: true,

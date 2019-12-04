@@ -191,14 +191,31 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
+  flex-direction: column;
 
   background: #2575fc;
   background: -webkit-linear-gradient(top, #023a20, #0abe6a);
   background: -o-linear-gradient(top, #048147, #0abe6a);
   background: -moz-linear-gradient(top, #048147, #046b3b);
   background: linear-gradient(top, #048147, #046b3b);
+  // background-image: url("/images/background-1.jpg");
 }
 
+.container-login101 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  flex-direction: column;
+  background-image: url("/images/background-1.jpg");
+}
 .wrap-login100 {
   width: 560px;
 }
@@ -487,7 +504,6 @@ input.input100 {
   }
 }
 
-
 // rating
 .box {
   width: 500px;
@@ -533,9 +549,76 @@ input.input100 {
   width: 100%;
   display: block;
   font-family: "Cabin Sketch", cursive;
+  font-size: 35px;
+  color: black;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+#feedback-question {
+  font-size: 30px;
+}
+
+.survey-form2 {
+  width: 100%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 35px;
+  color: white;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.survey-form3 {
+  width: 100%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
   font-size: 60px;
-  color: #fefefe;
+  color: white;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
+}
+
+.student_answer {
+  width: 100%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 60px;
+  color: black;
+  line-height: 1.2;
+}
+
+.student_answer2 {
+  width: 97%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 60px;
+  color: black;
+  line-height: 1.2;
+}
+
+.teacher-survey-creator-title {
+  width: 100%;
+  display: block;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 35px;
+  color: black;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.student_answer3 input {
+  display: block;
+  cursor: pointer;
+  width: 500px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  background: rgb(255, 255, 255);
+  color: #000;
+  font-size: 20px;
+  font-family: "Cabin Sketch", cursive;
 }
