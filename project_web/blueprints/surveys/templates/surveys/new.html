@@ -153,3 +153,47 @@ function addQuestion() {
     x = document.getElementById("survey_form")
     x.appendChild(Question)}
     </script> -->
+​ ​
+
+
+<!-- <h1>Create a new survey</h1>
+​
+<form id="survey_form" action="{{url_for('surveys.create')}}" method="POST">
+  Survey Topic <br />
+  <div class="dropdown">
+    <select name="topic">
+      <option value="Mathematics">Mathematics</option>
+      <option value="History">History</option>
+      <option value="Geography">Geography</option>
+      <option value="Science">Science</option>
+      <option value="Language">Language</option>
+    </select>
+    <div></div>
+  </div>
+  <div id="Questions">
+    <div id="duplicater">
+        <p>Question <a id="clicks">initialField</a></p> 
+      <input type="text" name="Question_1[]" placeholder="Type here.." />
+      Correct answer:
+      <input type="text" name="Answer_1[]" placeholder="Type here.." />
+    </div> -->
+<!-- <button onclick="addQuestion()">Add Question</button>
+​ ​
+<script>
+  let maxField = 4
+  let initialField = 1
+  function addQuestion() {
+    //Check maximum number of input fields
+    if(initialField < maxField){ 
+    initialField++; //Increment field counter
+    question = document.getElementById("duplicater");
+    clone = question.cloneNode(true);
+    document.getElementById("Questions").appendChild(clone);
+    document.getElementById("clicks").innerHTML = initialField; -->
+
+<!-- <script>
+function addQuestion() {
+    Question = document.createElement("input")
+    x = document.getElementById("survey_form")
+    x.appendChild(Question)}
+    </script> -->
