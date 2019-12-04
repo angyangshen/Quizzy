@@ -63,6 +63,7 @@ def get_topic(chart_topic):
 #     scorelevel = []
 #     scorestudents = []
 
+
 #     scores = User_survey.select().join(User_, on=(User_survey.user_id == User_.id)).join(Survey, on=(User_survey.survey_id == Survey.id)).where(User_.role == 'student', Survey.topic == score_topic)
 #     for c in scores:
 #         scorelevel.append(c.percentage_correct)
@@ -71,3 +72,4 @@ def get_topic(chart_topic):
 #         "score":scorelevel, 
 #         "scorestudents":scorestudents
 #     })
+

@@ -47,6 +47,6 @@ def create():
             return redirect(url_for('sessions.teachers'))   
     else:
         flash("Wrong username","warning")
-        return redirect(url_for('sessions.teachers'))
+        return redirect(url_for('sessions.teachers')) 
     
         
