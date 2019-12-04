@@ -5,6 +5,7 @@ from flask_login import login_required,login_user,logout_user,current_user
 from database import db
 from models.user import User_
 from models.survey import Survey
+from models.user_survey import User_survey
 
 teachers_blueprint = Blueprint('teachers',
                             __name__,
@@ -23,3 +24,8 @@ def charts():
         studentlist.append(s.username)
     return render_template('teachers/charts.html',students = students, studentlist=studentlist)
 
+@teachers_blueprint.route('/scores', methods=['GET'])
+def scores():
+    students = User_.select().where(User_.role == "student")
+    studentlist = []
+    student_scores = User_survey.select().where(User_survey.id == "")
