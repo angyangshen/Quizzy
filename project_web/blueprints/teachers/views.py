@@ -14,3 +14,12 @@ teachers_blueprint = Blueprint('teachers',
 @teachers_blueprint.route('/home', methods=['GET'])
 def new():
     return render_template('teachers/home.html')
+
+@teachers_blueprint.route('/charts', methods=['GET'])
+def charts():
+    students = User_.select().where(User_.role == "student")
+    studentlist=[]
+    for s in students:
+        studentlist.append(s.username)
+    return render_template('teachers/charts.html',students = students, studentlist=studentlist)
+
