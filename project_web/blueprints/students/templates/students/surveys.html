@@ -12,27 +12,24 @@
   <div class="student_pair">
     <div class="student_question">{{survey_pair['question']}}</div>
     <div class="question_type" style="display: none;">normal</div>
-    <input name="student_answer" class="form-control student_answer" />
+    <input name="student_answer_normal" class="form-control student_answer_normal" />
   </div>
 
   {% elif survey_pair['type']=="mcq" %}
   <div class="student_pair">
     <div class="student_question">{{survey_pair['question']}}</div>
     <div class="question_type" style="display: none;">mcq</div>
-    <select name="student_answer" class="student_answer">
-      <option value="{{survey_pair['choice'][0]}}"
-        >{{survey_pair['choice'][0]}}</option
-      >
-      <option value="{{survey_pair['choice'][1]}}"
-        >{{survey_pair['choice'][1]}}</option
-      >
-      <option value="{{survey_pair['choice'][2]}}"
-        >{{survey_pair['choice'][2]}}</option
-      >
-      <option value="{{survey_pair['choice'][3]}}"
-        >{{survey_pair['choice'][3]}}</option
-      >
-    </select>
+    <form name="student_answer" class="student_answer">
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][0]}}"
+          >{{survey_pair['choice'][0]}}</input><br />
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][1]}}"
+          >{{survey_pair['choice'][1]}}</input><br />
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][2]}}"
+          >{{survey_pair['choice'][2]}}</input><br />
+        <input type="radio" class="mcquestion" name="mcquestion" value="{{survey_pair['choice'][3]}}"
+          >{{survey_pair['choice'][3]}}</input><br />
+    </form>
+
   </div>
   {% endif %}{% endfor %}
   <button
@@ -51,15 +48,28 @@
   crossorigin="anonymous"
 ></script>
 <script>
+  let mcquestion = document.getElementsByClassName("mcquestion");
   student_survey = document.getElementsByClassName("student_survey");
   student_pair = document.getElementsByClassName("student_pair");
+  
   function checkAnswer() {
     data = [];
     for (let i = 0; i < student_pair.length; i++) {
       let pair = student_pair[i];
+      question_types = student_pair[i].getElementsByClassName("question_type")[0].innerText;
+      if (question_types == "mcq"){
+        for (let j = 0; j < mcquestion.length; j++){
+          if(mcquestion[j].checked){
+            student_answer = mcquestion[j].value;
+            break;
+          }
+        }
+      }
+      else {
+        student_answer = pair.getElementsByClassName("student_answer_normal")[0].value;
+      }
       student_question = pair.getElementsByClassName("student_question")[0]
         .innerText;
-      student_answer = pair.getElementsByClassName("student_answer")[0].value;
       question_type = pair.getElementsByClassName("question_type")[0].innerText;
       data.push({
         type: question_type,
@@ -67,7 +77,6 @@
         answer: student_answer
       });
     }
-
     $.ajax({
       type: "POST",
       headers: {
